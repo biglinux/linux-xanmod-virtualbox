@@ -1,17 +1,17 @@
 # Maintainer: Bernhard Landauer <bernhard@manjaro.org>
 # Maintainer: Philip Müller <philm[at]manjaro[dot]org>
 
-# Archlinux credits:
+# Arch credits:
 # Ionut Biru <ibiru@archlinux.org>
 # Sébastien Luttringer <seblu@aur.archlinux.org>
 
-_linuxprefix=linux-xanmod-lts
-_extramodules=$(find /usr/lib/modules -type d -iname 5.15.89*xanmod* | rev | cut -d "/" -f1 | rev)
+_linuxprefix=linux-xanmod
+_extramodules=$(find /usr/lib/modules -type d -iname 6.1.7*xanmod* | rev | cut -d "/" -f1 | rev)
 
 pkgname=("$_linuxprefix-virtualbox-host-modules")
 pkgver=7.0.4
 _pkgver=7.0.4
-pkgrel=515891
+pkgrel=6171
 pkgdesc='Virtualbox host kernel modules for Manjaro Kernel'
 arch=('x86_64')
 url='http://virtualbox.org'
@@ -25,7 +25,7 @@ replaces=("$_linuxprefix-virtualbox-modules")
 install=virtualbox-host-modules.install
 
 build() {
-  _kernver=$(find /usr/lib/modules -type d -iname 5.15.89*xanmod* | rev | cut -d "/" -f1 | rev)
+  _kernver=$(find /usr/lib/modules -type d -iname 6.1.7*xanmod* | rev | cut -d "/" -f1 | rev)
 
   # build host modules
   echo 'Host modules'
@@ -33,7 +33,7 @@ build() {
 }
 
 package(){
-  _kernver=$(find /usr/lib/modules -type d -iname 5.15.89*xanmod* | rev | cut -d "/" -f1 | rev)
+  _kernver=$(find /usr/lib/modules -type d -iname 6.1.7*xanmod* | rev | cut -d "/" -f1 | rev)
 
   cd "vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
   install -Dm644 * -t "$pkgdir/usr/lib/modules/$_extramodules/"
