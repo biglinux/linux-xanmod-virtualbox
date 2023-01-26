@@ -6,12 +6,12 @@
 # Sébastien Luttringer <seblu@aur.archlinux.org>
 
 _linuxprefix=linux-xanmod
-_extramodules=$(find /usr/lib/modules -type d -iname 6.1.8*xanmod* | rev | cut -d "/" -f1 | rev)
+_extramodules=$(find /usr/lib/modules -type d -iname 23.01.03*xanmod* | rev | cut -d "/" -f1 | rev)
 
 pkgname=("$_linuxprefix-virtualbox-host-modules")
 pkgver=7.0.6
-_pkgver=7.0.6
-pkgrel=6181
+_pkgver="${pkgver}_OSE"
+pkgrel=2301030216
 pkgdesc='Virtualbox host kernel modules for Manjaro Kernel'
 arch=('x86_64')
 url='http://virtualbox.org'
@@ -25,7 +25,7 @@ replaces=("$_linuxprefix-virtualbox-modules")
 install=virtualbox-host-modules.install
 
 build() {
-  _kernver=$(find /usr/lib/modules -type d -iname 6.1.8*xanmod* | rev | cut -d "/" -f1 | rev)
+  _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
 
   # build host modules
   echo 'Host modules'
@@ -33,7 +33,7 @@ build() {
 }
 
 package(){
-  _kernver=$(find /usr/lib/modules -type d -iname 6.1.8*xanmod* | rev | cut -d "/" -f1 | rev)
+  _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
 
   cd "vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
   install -Dm644 * -t "$pkgdir/usr/lib/modules/$_extramodules/"
