@@ -1,18 +1,18 @@
-EXTRAMODULES=$(find /usr/lib/modules -type d -iname 6.2.9*xanmod* | rev | cut -d "/" -f1 | rev)
+EXTRAMODULES=$(find /usr/lib/modules -type d -iname 6.2.10*xanmod* | rev | cut -d "/" -f1 | rev)
 
 post_install() {
 cat << EOF
 ===> You must load vboxdrv module before starting VirtualBox:
 ===> # modprobe vboxdrv
 EOF
-    depmod $(find /usr/lib/modules -type d -iname 6.2.9*xanmod* | rev | cut -d "/" -f1 | rev)
+    depmod $(find /usr/lib/modules -type d -iname 6.2.10*xanmod* | rev | cut -d "/" -f1 | rev)
 }
 
 post_upgrade() {
-    depmod $(find /usr/lib/modules -type d -iname 6.2.9*xanmod* | rev | cut -d "/" -f1 | rev)
+    depmod $(find /usr/lib/modules -type d -iname 6.2.10*xanmod* | rev | cut -d "/" -f1 | rev)
     echo 'In order to use the new version, reload all virtualbox modules manually.'
 }
 
 post_remove() {
-    depmod $(find /usr/lib/modules -type d -iname 6.2.9*xanmod* | rev | cut -d "/" -f1 | rev)
+    depmod $(find /usr/lib/modules -type d -iname 6.2.10*xanmod* | rev | cut -d "/" -f1 | rev)
 }
