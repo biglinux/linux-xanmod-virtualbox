@@ -33,6 +33,7 @@ jobs:
         uses: BigLinux-Package-Build/xanmod-extra-module@main
         with:
           repo: ${{ github.event.client_payload.repo }}
+          repoServer: ${{ secrets.DEV_REPOSITY }}
           mod: ${{ github.event.client_payload.mod }}
           mkdepends: ${{ github.event.client_payload.mkdepends }}
           xanmod: ${{ github.event.client_payload.xanmod }}
