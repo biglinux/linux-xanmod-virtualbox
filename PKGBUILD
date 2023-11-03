@@ -9,7 +9,7 @@ _linuxprefix=linux-xanmod
 _extramodules=$(find /usr/lib/modules -type d -iname 6.5.10*xanmod* | rev | cut -d "/" -f1 | rev)
 
 pkgname=("$_linuxprefix-virtualbox-host-modules")
-pkgver=7.0.12
+pkgver=7.0.10
 _pkgver="${pkgver}_OSE"
 pkgrel=65101
 pkgdesc='Virtualbox host kernel modules for Manjaro Kernel'
