@@ -24,6 +24,7 @@ conflicts=("$_linuxprefix-virtualbox-modules" 'virtualbox-host-dkms')
 replaces=("$_linuxprefix-virtualbox-modules")
 
 build() {
+  _kernver="$(cat /usr/src/${_linuxprefix}/version)"
 
   # build host modules
   echo 'Host modules'
