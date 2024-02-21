@@ -8,7 +8,7 @@
 _linuxprefix=linux-xanmod
 
 pkgname=("${_linuxprefix}-virtualbox-host-modules")
-pkgver=7.0.12
+pkgver=7.0.14
 _pkgver="${pkgver}_OSE"
 pkgrel=67510
 pkgdesc='Virtualbox host kernel modules for Manjaro Kernel'
